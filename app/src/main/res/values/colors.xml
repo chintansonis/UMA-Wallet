@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@android:color/white</color>
+    <color name="colorPrimaryDark">#007CC2</color>
+    <color name="gray">#E6E6E6</color>
+    <color name="color_hint_signup">#667799</color>
+    <color name="yellow">#fbc02d</color>
+    <color name="colorAccent">#2A5F91</color>
+    <color name="black">#000000</color>
+    <color name="login_signup_bg">#0A0B0D</color>
+    <color name="app_bg">#ffffff</color>
+    <color name="emergency_red">#DA251C</color>
+    <color name="light_blue">#01B0F1</color>
+    <color name="purple">#347ABF</color>
+    <color name="color_off_white">#B6B6B6</color>
+    <color name="light_20_black">#CDCCCC</color>
+    <color name="color_green">#32CD32</color>
+    <color name="red">#BA3B2D</color>
+    <color name="half_black">#535051</color>
+    <color name="orange">#E67817</color>
+    <color name="colorWhiteSmoke">#F7F7F7</color>
+    <color name="transparent">#00000000</color>
+    <color name="cream_color">#EEEEEE</color>
+    <color name="dashboard_offer_title">#9A6383</color>
+    <color name="drawer_selected">#097CAB</color>
+    <color name="transparent_light">#88FFFFFF</color>
+    <color name="alpha_black_50">#50000000</color>
+    <color name="grey">#F0F3F8</color>
+    <color name="coupon_bg">#F1A54D</color>
+    <color name="grey_dark">#898989</color>
+    <color name="dark_grayish">#615D5C</color>
+    <color name="reedem_color">#1C1B19</color>
+    <color name="black_transperent_60">#99000000</color>
+    <color name="offer_bg_color">#E67817</color>
+    <color name="light_pink">#FFF5F4</color>
+
+</resources>

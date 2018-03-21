@@ -1,0 +1,103 @@
+Remaining:
+
+------------------------------------------------------------------------
+    Glide
+
+        Glide.with(context)
+           .load()
+           .asBitmap()
+           .listener(new RequestListener<String, Bitmap>() {
+               @Override
+               public boolean onException(Exception e, String model, Target<Bitmap> target, boolean isFirstResource) {
+                   preloader.setVisibility(View.GONE);
+                   return false;
+               }
+
+               @Override
+               public boolean onResourceReady(Bitmap resource, String model, Target<Bitmap> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                   preloader.setVisibility(View.GONE);
+                   return false;
+               }
+           })
+           .into(new BitmapImageViewTarget(imgPerson) {
+                @Override
+                protected void setResource(Bitmap resource) {
+                    RoundedBitmapDrawable circularBitmapDrawable =
+                            RoundedBitmapDrawableFactory.create(context.getResources(), resource);
+                    circularBitmapDrawable.setCircular(true);
+                    imgPerson.setImageDrawable(circularBitmapDrawable);
+                }
+            });
+
+------------------------------------------------------------------------
+    AdView
+
+        <com.google.android.gms.ads.AdView
+          android:id="@+id/adView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_centerHorizontal="true"
+          app:adSize="BANNER"
+          app:adUnitId="@string/Banner_Ad_id" />
+
+        AdView adView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+        final InterstitialAd interstitialAd = new InterstitialAd(context);
+        interstitialAd.setAdUnitId(context.getString(R.string.Fullpage_Ad_id));
+        AdRequest adRequest = new AdRequest.Builder().build();
+        interstitialAd.loadAd(adRequest);
+        interstitialAd.setAdListener(new AdListener() {
+            @Override
+                public void onAdLoaded() {
+                    interstitialAd.show();
+                }
+             });
+
+------------------------------------------------------------------------
+    Social login credential
+
+
+
+---------------------------------------------------------------------------
+
+    Guidelines Content
+
+---------------------------------------------------------------------------
+    Key store
+
+
+
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+    icon size
+    login register button icon:
+    1.size:40 dp
+    2padding 0dp
+
+    action bar icon
+    1.size:30 dp
+        2padding 5dp
+
+
+left icon
+    1.size:30 dp
+        2padding 5dp
+my profile
+    1.size:16 dp
+        2padding 1dp
+
+        dashboard offer adapter
+            1.size:28 dp
+                2padding 7dp
+
+                item deetail bottom button
+                            1.size:22 dp
+                                2padding 0dp
+
+
+---------------------------------------------------------------------------
+
+
