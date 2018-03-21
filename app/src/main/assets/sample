@@ -100,4 +100,13 @@ my profile
 
 ---------------------------------------------------------------------------
 
+    icon size
+    login register button icon:
+    1.size:40 dp
+    2padding 6dp(color bottom bg)
+
+    footer icon:
+        1.size:20 dp
+        2padding 4dp(color bottom bg)
+
 

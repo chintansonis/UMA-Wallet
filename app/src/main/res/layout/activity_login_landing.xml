@@ -29,24 +29,28 @@
         <com.umawallet.custom.TfTextView
             android:id="@+id/txtNewUser"
             android:layout_width="0dp"
+            android:layout_margin="@dimen/padding_8"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/corner_et_bg"
             android:gravity="center"
             android:text="@string/new_user"
             android:textAllCaps="false"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/white"
             android:padding="@dimen/padding_6"
             android:textSize="@dimen/text_size_16"
             app:ftype="regular" />
 
         <View
-            android:layout_width="@dimen/padding_2"
-            android:layout_height="@dimen/padding_35"
+            android:layout_width="0.5dp"
+            android:layout_height="@dimen/padding_40"
             android:background="@color/colorPrimaryDark"
             />
 
         <com.umawallet.custom.TfTextView
             android:id="@+id/txtLogin"
+            android:layout_margin="@dimen/padding_8"
+            android:background="@drawable/corner_et_bg"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_6"
@@ -54,7 +58,7 @@
             android:gravity="center"
             android:text="@string/login"
             android:textAllCaps="false"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/white"
             android:textSize="@dimen/text_size_16"
             app:ftype="regular" />
 

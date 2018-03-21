@@ -4,4 +4,25 @@
     <string name="msg_please_wait">Please wait..</string>
     <string name="login">Login</string>
     <string name="new_user">New User</string>
+    <string name="hint_email">Enter email</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="hint_password">Enter password</string>
+    <string name="please_enter_email">Please enter email</string>
+    <string name="please_enter_name">Please enter name</string>
+    <string name="please_enter_valid_email">Please enter valid email</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="please_enter_confirm_password">Please enter confirm password</string>
+    <string name="register">Register</string>
+    <string name="hint_name">Enter name</string>
+    <string name="hint_confirm_password">Enter Confirm password</string>
+    <string name="hint_ethreum_address">Enter ethereum address</string>
+    <string name="hint_ethreum_key">Enter ethereum public key</string>
+    <string name="hint_nick_name">Enter nick name</string>
+    <string name="or">OR</string>
+    <string name="etherm_detail">Ethereum Detail (optional)</string>
+    <string name="err_pass_not_match">passwords not matched.</string>
+    <string name="submit">Submit</string>
+    <string name="settings">Settings</string>
+    <string name="home">Home</string>
+    <string name="states">States</string>
 </resources>

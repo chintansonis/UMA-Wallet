@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     android:clickable="true"
     >
             <LinearLayout
+                android:id="@+id/llAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|top"
@@ -18,11 +18,25 @@
 
             </LinearLayout>
             <FrameLayout
+                android:layout_below="@id/llAppBar"
                 android:id="@+id/contentFrame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/app_bg"
+                android:layout_marginBottom="?actionBarSize"
                 android:clickable="true"
                 android:overScrollMode="never" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom"
+        android:elevation="@dimen/height_4"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
 
-        </LinearLayout>
+        <include
+            layout="@layout/partial_footer_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+        </RelativeLayout>

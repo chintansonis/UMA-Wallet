@@ -7,14 +7,15 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.umawallet.R;
+import com.umawallet.custom.TfTextView;
 import com.umawallet.fragment.BaseFragment;
 import com.umawallet.helper.Functions;
 
@@ -217,5 +218,32 @@ public class BaseActivity extends AppCompatActivity {
         Fragment fragmentToPush = DashBoardFragment.getFragment(this);
         pushAddFragments(fragmentToPush, true, true);
     }*/
-
+    public void loadBottomUI(int selectedPosition) {
+        switch (selectedPosition) {
+            case 1:
+                ((ImageView) findViewById(R.id.ivFooterHome)).setColorFilter(ContextCompat.getColor(context, R.color.colorPrimaryDark));
+                ((ImageView) findViewById(R.id.ivFooterSettings)).setColorFilter(ContextCompat.getColor(context, R.color.bottom_unselect));
+                ((ImageView) findViewById(R.id.ivFooterStates)).setColorFilter(ContextCompat.getColor(context, R.color.bottom_unselect));
+                ((TfTextView) findViewById(R.id.txtFooterHome)).setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
+                ((TfTextView) findViewById(R.id.txtFooterSettings)).setTextColor(ContextCompat.getColor(context, R.color.bottom_unselect));
+                ((TfTextView) findViewById(R.id.txtFooterState)).setTextColor(ContextCompat.getColor(context, R.color.bottom_unselect));
+                break;
+            case 2:
+                ((ImageView) findViewById(R.id.ivFooterHome)).setColorFilter(ContextCompat.getColor(context, R.color.bottom_unselect));
+                ((ImageView) findViewById(R.id.ivFooterSettings)).setColorFilter(ContextCompat.getColor(context, R.color.bottom_unselect));
+                ((ImageView) findViewById(R.id.ivFooterStates)).setColorFilter(ContextCompat.getColor(context, R.color.colorPrimaryDark));
+                ((TfTextView) findViewById(R.id.txtFooterHome)).setTextColor(ContextCompat.getColor(context, R.color.bottom_unselect));
+                ((TfTextView) findViewById(R.id.txtFooterSettings)).setTextColor(ContextCompat.getColor(context, R.color.bottom_unselect));
+                ((TfTextView) findViewById(R.id.txtFooterState)).setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
+                break;
+            case 3:
+                ((ImageView) findViewById(R.id.ivFooterHome)).setColorFilter(ContextCompat.getColor(context, R.color.bottom_unselect));
+                ((ImageView) findViewById(R.id.ivFooterSettings)).setColorFilter(ContextCompat.getColor(context, R.color.colorPrimaryDark));
+                ((ImageView) findViewById(R.id.ivFooterStates)).setColorFilter(ContextCompat.getColor(context, R.color.bottom_unselect));
+                ((TfTextView) findViewById(R.id.txtFooterHome)).setTextColor(ContextCompat.getColor(context, R.color.bottom_unselect));
+                ((TfTextView) findViewById(R.id.txtFooterSettings)).setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
+                ((TfTextView) findViewById(R.id.txtFooterState)).setTextColor(ContextCompat.getColor(context, R.color.bottom_unselect));
+                break;
+        }
+    }
 }

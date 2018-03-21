@@ -89,4 +89,9 @@
     <dimen name="custom_profile_image">50dp</dimen>
     <dimen name="custom_profile_padding">2dp</dimen>
     <dimen name="padding_35">35dp</dimen>
+    <dimen name="padding_210">210dp</dimen>
+    <dimen name="padding_60">60dp</dimen>
+    <dimen name="height_38">38dp</dimen>
+    <dimen name="padding_100">100dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
 </resources>
