@@ -2,4 +2,6 @@
     <string name="app_name">UMA Wallet</string>
     <string name="click_back_to_exit">Press back again to exit</string>
     <string name="msg_please_wait">Please wait..</string>
+    <string name="login">Login</string>
+    <string name="new_user">New User</string>
 </resources>

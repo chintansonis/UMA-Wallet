@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="@dimen/height_180"
+            android:layout_height="@dimen/height_180"
+            android:src="@drawable/logowithname" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.umawallet.custom.TfTextView
+            android:id="@+id/txtNewUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/new_user"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="@dimen/padding_6"
+            android:textSize="@dimen/text_size_16"
+            app:ftype="regular" />
+
+        <View
+            android:layout_width="@dimen/padding_2"
+            android:layout_height="@dimen/padding_35"
+            android:background="@color/colorPrimaryDark"
+            />
+
+        <com.umawallet.custom.TfTextView
+            android:id="@+id/txtLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_6"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_size_16"
+            app:ftype="regular" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
