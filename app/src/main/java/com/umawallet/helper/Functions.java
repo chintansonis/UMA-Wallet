@@ -14,19 +14,12 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.location.Address;
-import android.location.Geocoder;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.text.Spanned;
@@ -37,7 +30,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -46,18 +38,14 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.droidbyme.toastlib.ToastEnum;
 import com.droidbyme.toastlib.ToastLib;
-import com.umawallet.BuildConfig;
 import com.umawallet.R;
 import com.umawallet.custom.FontType;
 import com.umawallet.custom.TfEditText;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -184,7 +172,7 @@ public class Functions {
     public static void showToast(Context context, String message) {
         new ToastLib.Builder(context, message)
                 .duration(ToastEnum.SHORT)
-                .backgroundColor(ContextCompat.getColor(context, R.color.light_blue))
+                .backgroundColor(ContextCompat.getColor(context, R.color.colorPrimaryDark))
                 .textColor(ContextCompat.getColor(context, R.color.white))
                 .typeface(getFontType(context, FontType.Regular.getId()))
                 .textSize(16)

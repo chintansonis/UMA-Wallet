@@ -2,15 +2,15 @@ package com.umawallet.ui;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.umawallet.R;
 import com.umawallet.custom.TfTextView;
 import com.umawallet.helper.Functions;
+import com.umawallet.helper.Preferences;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     private com.umawallet.custom.TfTextView txtAppName;
 
@@ -18,6 +18,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        setShowBackMessage(false);
         init();
 
     }
@@ -42,9 +43,14 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                Functions.fireIntent(SplashActivity.this, LoginLandingActivity.class);
-                finish();
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                if (Preferences.getInstance(SplashActivity.this).getBoolean(Preferences.KEY_IS_AUTO_LOGIN)) {
+                    DashBoardActivity.launchDashboradActivity(SplashActivity.this);
+                } else {
+                    Functions.fireIntent(SplashActivity.this, LoginLandingActivity.class);
+                    finish();
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+
             }
         }.start();
     }

@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/UMA-Wallet.iml" filepath="$PROJECT_DIR$/UMA-Wallet.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://E:\freelancing\unawalletws\UMA-Wallet\app\app.iml" filepath="E:\freelancing\unawalletws\UMA-Wallet\app\app.iml" />
-      <module fileurl="file://E:\freelancing\unawalletws\UMA-Wallet\krishUMAWS.iml" filepath="E:\freelancing\unawalletws\UMA-Wallet\krishUMAWS.iml" />
     </modules>
   </component>
 </project>

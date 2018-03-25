@@ -5,7 +5,7 @@ package com.umawallet.helper;
  */
 
 public class AppConstants {
-    private static final String BASE_HOST = String.format("%s", "http://skypamphlets.com/webroot/api/");
+    private static final String BASE_HOST = String.format("%s", "http://umawallet.com/api/");
     public static String ResponseSuccess = "1";
     public static String DEFAULT_STRING = "";
     public static int FOOTER_HOME = 1;

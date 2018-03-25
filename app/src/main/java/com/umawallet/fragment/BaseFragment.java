@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.umawallet.api.responsepojos.UserDetails;
 import com.umawallet.ui.BaseActivity;
 
 
@@ -12,6 +13,7 @@ import com.umawallet.ui.BaseActivity;
  */
 
 public class BaseFragment extends Fragment {
+    protected UserDetails userDetails;
     /*protected UserDetails userDetails;*/
     protected View view;
     /**
@@ -51,4 +53,5 @@ public class BaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
+
 }

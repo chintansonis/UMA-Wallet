@@ -94,4 +94,5 @@
     <dimen name="height_38">38dp</dimen>
     <dimen name="padding_100">100dp</dimen>
     <dimen name="padding_16">16dp</dimen>
+    <dimen name="padding_200">200dp</dimen>
 </resources>

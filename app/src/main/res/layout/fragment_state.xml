@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent">
+
+    <com.umawallet.custom.TfTextView
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_16"
+        android:text="@string/this_feature_under_dev"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

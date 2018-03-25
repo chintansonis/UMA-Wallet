@@ -5,10 +5,21 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.umawallet.R;
+import com.umawallet.api.RestClient;
+import com.umawallet.api.responsepojos.LoginRequest;
+import com.umawallet.api.responsepojos.LoginResponse;
+import com.umawallet.api.responsepojos.UserDetails;
 import com.umawallet.custom.MyEditTextWithCloseBtn;
 import com.umawallet.custom.TfTextView;
+import com.umawallet.helper.AppConstants;
 import com.umawallet.helper.Functions;
+import com.umawallet.helper.Preferences;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Shriji on 3/21/2018.
@@ -60,14 +71,56 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 } else if (TextUtils.isEmpty(edtPassword.getText().toString().trim())) {
                     Functions.showToast(LoginActivity.this, getString(R.string.please_enter_password));
                 } else {
-                    DashBoardActivity.launchDashboradActivity(LoginActivity.this);
-                    finish();
+                    callLoginApi();
                 }
                 break;
             case R.id.txtForgotPassword:
                 ForgotPasswordActivity.launchForgetPasswordActivity(LoginActivity.this);
                 break;
         }
+    }
+
+    private void callLoginApi() {
+        if (Functions.isConnected(LoginActivity.this)) {
+            showProgressDialog(false);
+            LoginRequest loginRequest = new LoginRequest();
+            loginRequest.setEmail(edtEmail.getText().toString().trim());
+            loginRequest.setPassword(edtPassword.getText().toString());
+            RestClient.get().loginApi(loginRequest).enqueue(new Callback<LoginResponse>() {
+                @Override
+                public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                    hideProgressDialog();
+                    if (response.body() != null) {
+                        if (response.body().getStatus().equalsIgnoreCase(AppConstants.ResponseSuccess)) {
+                            onLoginResponse(response.body().getUserDetails());
+                        } else {
+                            Functions.showToast(LoginActivity.this, response.body().getMessage());
+                        }
+                    } else {
+                        Functions.showToast(LoginActivity.this, getString(R.string.err_something_went_wrong));
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<LoginResponse> call, Throwable t) {
+                    hideProgressDialog();
+                    Functions.showToast(LoginActivity.this, getString(R.string.err_something_went_wrong));
+                }
+            });
+        } else {
+            Functions.showToast(LoginActivity.this, getString(R.string.err_no_internet_connection));
+        }
+    }
+
+    private void onLoginResponse(UserDetails userDetails) {
+        Preferences.getInstance(LoginActivity.this).setString(Preferences.KEY_USER_ID, userDetails.getUserId());
+        Preferences.getInstance(LoginActivity.this).setString(Preferences.KEY_USER_LOGIN_PASS_WORD, edtPassword.getText().toString().trim().trim());
+        Preferences.getInstance(LoginActivity.this).setString(Preferences.KEY_USER_LOGIN_EMAIL, edtEmail.getText().toString().trim().trim());
+        Preferences.getInstance(LoginActivity.this).setBoolean(Preferences.KEY_IS_AUTO_LOGIN, true);
+        Preferences.getInstance(LoginActivity.this).setString(Preferences.KEY_USER_MODEL, new Gson().toJson(userDetails));
+        LoginLandingActivity.loginLandingActivity.finish();
+        DashBoardActivity.launchDashboradActivity(LoginActivity.this);
+
     }
 
     @Override

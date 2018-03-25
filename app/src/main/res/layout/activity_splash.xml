@@ -15,7 +15,7 @@
         <android.support.v7.widget.AppCompatImageView
             android:layout_width="@dimen/height_180"
             android:layout_height="@dimen/height_180"
-            android:src="@drawable/logowithname" />
+            android:src="@drawable/ic_launcher"/>
 
         <com.umawallet.custom.TfTextView
             android:id="@+id/txtAppName"

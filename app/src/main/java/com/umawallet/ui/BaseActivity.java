@@ -17,6 +17,10 @@ import android.widget.ImageView;
 import com.umawallet.R;
 import com.umawallet.custom.TfTextView;
 import com.umawallet.fragment.BaseFragment;
+import com.umawallet.fragment.DashBoardFragment;
+import com.umawallet.fragment.SettingFragment;
+import com.umawallet.fragment.StateChartFragment;
+import com.umawallet.helper.AppConstants;
 import com.umawallet.helper.Functions;
 
 import java.util.Stack;
@@ -151,21 +155,25 @@ public class BaseActivity extends AppCompatActivity {
         } else {
             if (!((BaseFragment) fragmentBackStack.get(fragmentBackStack.size() - 1)).onFragmentBackPress()) {
                 Fragment currentFragment = fragmentBackStack.get(fragmentBackStack.size() - 1);
-                /*if (currentFragment instanceof FreeOffersFragment) {
+                if (currentFragment instanceof SettingFragment) {
                     loadHomeFragment();
-                } else if (currentFragment instanceof MySavingsFragment) {
-                    loadHomeFragment();
-                }else if (currentFragment instanceof MyCoupnsFragment) {
-                    loadHomeFragment();
-                } else if (currentFragment instanceof MyProfileFragment) {
+                } else if (currentFragment instanceof StateChartFragment) {
                     loadHomeFragment();
                 } else if (currentFragment instanceof DashBoardFragment) {
                     doubleTapOnBackPress();
                 } else {
                     popFragments(true);
-                }*/
+                }
             }
         }
+    }
+
+    private void loadHomeFragment() {
+        setHeaderTitle(getString(R.string.app_name));
+        getFragments().clear();
+        Fragment fragmentToPush = DashBoardFragment.getFragment(this);
+        pushAddFragments(fragmentToPush, true, true);
+        loadBottomUI(AppConstants.FOOTER_HOME);
     }
 
     /**
@@ -245,5 +253,9 @@ public class BaseActivity extends AppCompatActivity {
                 ((TfTextView) findViewById(R.id.txtFooterState)).setTextColor(ContextCompat.getColor(context, R.color.bottom_unselect));
                 break;
         }
+    }
+    public void setHeaderTitle(String title) {
+        ((TfTextView) findViewById(R.id.txtTitle)).setText(title);
+        ((TfTextView) findViewById(R.id.txtTitle)).setTextColor(getResources().getColor(R.color.white));
     }
 }
