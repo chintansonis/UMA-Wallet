@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/padding_8"
+                android:layout_height="match_parent">
+
+                <com.umawallet.custom.TfTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey_dark"
+                    android:text="From :"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    />
+
+                <com.umawallet.custom.TfTextView
+                    android:id="@+id/tvFromDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_6"
+                    android:background="@drawable/blue_border_grey_bg"
+                    android:padding="@dimen/padding_8"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="normal"
+                    />
+                <com.umawallet.custom.TfTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey_dark"
+                    android:text="To :"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    />
+
+                <com.umawallet.custom.TfTextView
+                    android:id="@+id/tvTODetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_6"
+                    android:background="@drawable/blue_border_grey_bg"
+                    android:padding="@dimen/padding_8"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="normal"
+                    />
+                <com.umawallet.custom.TfTextView
+                    android:textColor="@color/grey_dark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gas Fee :"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    />
+
+                <com.umawallet.custom.TfTextView
+                    android:id="@+id/tvGasFee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_6"
+                    android:background="@drawable/blue_border_grey_bg"
+                    android:padding="@dimen/padding_8"
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    />
+                <com.umawallet.custom.TfTextView
+                    android:textColor="@color/grey_dark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Confirmation :"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    />
+
+                <com.umawallet.custom.TfTextView
+                    android:id="@+id/tvConfirmation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_6"
+                    android:background="@drawable/blue_border_grey_bg"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/padding_8"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="normal"
+                    />
+
+                <com.umawallet.custom.TfTextView
+                    android:textColor="@color/grey_dark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Transaction # :"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    />
+
+                <com.umawallet.custom.TfTextView
+                    android:id="@+id/tvTransaction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/padding_6"
+                    android:background="@drawable/blue_border_grey_bg"
+                    android:padding="@dimen/padding_8"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="normal"
+                    />
+                <com.umawallet.custom.TfTextView
+                    android:textColor="@color/grey_dark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Transaction Time :"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    />
+
+                <com.umawallet.custom.TfTextView
+                    android:id="@+id/tvTransactionTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/padding_6"
+                    android:background="@drawable/blue_border_grey_bg"
+                    android:padding="@dimen/padding_8"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="normal"
+                    />
+                <com.umawallet.custom.TfTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Block # :"
+                    android:textColor="@color/grey_dark"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    />
+
+                <com.umawallet.custom.TfTextView
+                    android:id="@+id/tvTransactionBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/padding_6"
+                    android:background="@drawable/blue_border_grey_bg"
+                    android:padding="@dimen/padding_8"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="normal"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -2,9 +2,12 @@ package com.umawallet.api;
 
 import com.umawallet.api.responsepojos.LoginRequest;
 import com.umawallet.api.responsepojos.LoginResponse;
+import com.umawallet.api.responsepojos.RequestFromAddress;
 import com.umawallet.api.responsepojos.RequestPassword;
 import com.umawallet.api.responsepojos.RequestRegister;
+import com.umawallet.api.responsepojos.ResponseGeUserAddress;
 import com.umawallet.api.responsepojos.ResponseGetWallet;
+import com.umawallet.api.responsepojos.ResponseTransaction;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -21,8 +24,14 @@ public interface AppApi {
     @GET("forgotPassword.php?Email=")
     Call<BaseResponse> forgotPasswordApi(@Query("Email") String email);
 
+    @GET("getUserAddress.php?UserId=")
+    Call<ResponseGeUserAddress> getUserAddressApi(@Query("UserId") String userId);
+
     @POST("userLogin.php")
     Call<LoginResponse> loginApi(@Body LoginRequest loginRequest);
+
+    @POST("getTranscation.php")
+    Call<ResponseTransaction> getTranscationApi(@Body RequestFromAddress requestFromAddress);
 
     @POST("Signup.php")
     Call<LoginResponse> RegisterApi(@Body RequestRegister requestRegister);
