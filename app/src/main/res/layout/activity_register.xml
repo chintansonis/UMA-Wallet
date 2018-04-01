@@ -135,6 +135,7 @@
                                 android:gravity="center"
                                 android:padding="@dimen/padding_8"
                                 android:text="@string/or"
+                                android:visibility="gone"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="@dimen/text_size_16"
                                 app:ftype="bold" />
@@ -146,6 +147,7 @@
                                 android:layout_height="@dimen/height_40"
                                 android:background="@drawable/blue_border_blue_bg"
                                 android:gravity="center|left"
+                                android:layout_marginTop="@dimen/padding_8"
                                 android:hint="@string/hint_ethreum_key"
                                 android:imeOptions="actionNext"
                                 android:textAllCaps="false"
@@ -157,6 +159,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/height_40"
                                 android:layout_marginTop="@dimen/padding_8"
+                                android:maxLength="16"
                                 android:background="@drawable/blue_border_blue_bg"
                                 android:gravity="center|left"
                                 android:hint="@string/hint_nick_name"
@@ -166,11 +169,13 @@
 
                             <com.umawallet.custom.MyEditTextWithCloseBtn
                                 android:id="@+id/edtAddharNumber"
+                                android:maxLength="12"
                                 style="@style/signup_et"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/height_40"
                                 android:layout_marginTop="@dimen/padding_8"
                                 android:background="@drawable/blue_border_blue_bg"
+                                android:inputType="number"
                                 android:gravity="center|left"
                                 android:hint="@string/hint_adhar_number"
                                 android:imeOptions="actionDone"

@@ -9,6 +9,9 @@ public class AppConstants {
     public static String ResponseSuccess = "1";
     public static String DEFAULT_STRING = "";
     public static int FOOTER_HOME = 1;
+    public static String CURRENCY_USD = "USD";
+    public static final String DefaultID = "-1";
+    public static String CURRENCY_INR = "INR";
     public static int FOOTER_STATES = 2;
     public static int FOOTER_SETTINGS = 3;
 

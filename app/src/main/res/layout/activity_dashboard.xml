@@ -2,36 +2,38 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true"
-    >
-            <LinearLayout
-                android:id="@+id/llAppBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center|top"
-                android:orientation="vertical">
+    android:clickable="true">
 
-                <include
-                    layout="@layout/app_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/llAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|top"
+        android:orientation="vertical">
 
-            </LinearLayout>
-            <FrameLayout
-                android:layout_below="@id/llAppBar"
-                android:id="@+id/contentFrame"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/app_bg"
-                android:layout_marginBottom="?actionBarSize"
-                android:clickable="true"
-                android:overScrollMode="never" />
+        <include
+            layout="@layout/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/contentFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/llAppBar"
+        android:layout_marginBottom="?actionBarSize"
+        android:background="@color/app_bg"
+        android:clickable="true"
+        android:overScrollMode="never" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center|bottom"
-        android:elevation="@dimen/height_4"
         android:layout_alignParentBottom="true"
+        android:elevation="@dimen/height_4"
+        android:gravity="center|bottom"
         android:orientation="vertical">
 
         <include
@@ -39,4 +41,4 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
-        </RelativeLayout>
+</RelativeLayout>

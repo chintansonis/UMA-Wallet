@@ -97,4 +97,6 @@
     <dimen name="padding_200">200dp</dimen>
     <dimen name="padding_4">4dp</dimen>
     <dimen name="height_70">70dp</dimen>
+    <dimen name="padding_50">50dp</dimen>
+    <dimen name="height_60">60dp</dimen>
 </resources>

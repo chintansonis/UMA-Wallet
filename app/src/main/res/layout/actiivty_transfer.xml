@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/padding_8"
+                android:orientation="vertical">
+
+                <com.umawallet.custom.TfTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select your Wallet"
+                    android:textColor="@color/grey_dark"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="normal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:background="@drawable/blue_border_blue_bg"
+                    android:padding="@dimen/padding_4">
+
+                    <com.umawallet.custom.customspinner.SearchableSpinner
+                        android:id="@+id/walletSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:popupBackground="@drawable/popup_background"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+                </LinearLayout>
+
+                <com.umawallet.custom.TfTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:text="Select Tokne"
+                    android:textColor="@color/grey_dark"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="normal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:background="@drawable/blue_border_blue_bg"
+                    android:padding="@dimen/padding_4">
+
+                    <com.umawallet.custom.customspinner.SearchableSpinner
+                        android:id="@+id/tokenSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:popupBackground="@drawable/popup_background"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llTokensAvailable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_12"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <com.umawallet.custom.TfTextView
+                        android:id="@+id/txtAvailableToken"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|left"
+                        android:text="Available Token 0"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/text_size_20"
+                        android:textStyle="normal" />
+
+                    <com.umawallet.custom.TfTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_12"
+                        android:gravity="center|left"
+                        android:text="your Address"
+                        android:textColor="@color/grey_dark"
+                        android:textSize="@dimen/text_size_16"
+                        android:textStyle="normal" />
+
+                    <com.umawallet.custom.TfTextView
+                        android:id="@+id/txtYourAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_12"
+                        android:gravity="center|left"
+                        android:padding="@dimen/padding_6"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_16"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+                <com.umawallet.custom.TfTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_12"
+                    android:gravity="center|left"
+                    android:text="To Address"
+                    android:textColor="@color/grey_dark"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="normal" />
+
+                <com.umawallet.custom.MyEditTextWithCloseBtn
+                    android:id="@+id/edtToAddress"
+                    style="@style/signup_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_40"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:background="@drawable/blue_border_blue_bg"
+                    android:gravity="center|left"
+                    android:hint="Enter To Address"
+                    android:imeOptions="actionNext"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_size_14" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|left"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:gravity="center|left"
+                    android:orientation="horizontal">
+
+                    <com.umawallet.custom.TfTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="No. of Toknes"
+                        android:textColor="@color/grey_dark"
+                        android:textSize="@dimen/text_size_16"
+                        android:textStyle="normal" />
+
+                    <com.umawallet.custom.MyEditTextWithCloseBtn
+                        android:id="@+id/edtTokens"
+                        style="@style/signup_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_40"
+                        android:layout_marginLeft="@dimen/padding_6"
+                        android:background="@drawable/blue_border_blue_bg"
+                        android:gravity="center|left"
+                        android:hint=""
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/text_size_14" />
+                </LinearLayout>
+
+                <com.umawallet.custom.TfTextView
+                    android:id="@+id/txtLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/padding_30"
+                    android:background="@drawable/corner_et_bg"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_8"
+                    android:text="Send Request"
+                    android:textColor="@color/white"
+                    app:ftype="regular" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

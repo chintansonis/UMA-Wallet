@@ -170,6 +170,25 @@
             android:layout_marginTop="@dimen/height_2"
             android:background="@color/grey_dark" />
         <com.umawallet.custom.TfTextView
+            android:id="@+id/tv_wallet"
+            style="@style/left_menu_tv_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/height_5"
+            android:drawableLeft="@drawable/ic_wallet"
+            android:drawablePadding="@dimen/height_20"
+            android:drawableTint="@color/black"
+            android:gravity="center|left"
+            android:text="@string/wallet"
+            app:ftype="regular" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/height_2"
+            android:background="@color/grey_dark" />
+
+        <com.umawallet.custom.TfTextView
             android:id="@+id/tv_logout"
             style="@style/left_menu_tv_1"
             android:layout_width="match_parent"

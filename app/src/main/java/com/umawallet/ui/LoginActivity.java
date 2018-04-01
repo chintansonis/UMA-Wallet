@@ -1,5 +1,6 @@
 package com.umawallet.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -10,6 +11,7 @@ import com.umawallet.R;
 import com.umawallet.api.RestClient;
 import com.umawallet.api.responsepojos.LoginRequest;
 import com.umawallet.api.responsepojos.LoginResponse;
+import com.umawallet.api.responsepojos.ResponseGeUserAddress;
 import com.umawallet.api.responsepojos.UserDetails;
 import com.umawallet.custom.MyEditTextWithCloseBtn;
 import com.umawallet.custom.TfTextView;
@@ -114,13 +116,55 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private void onLoginResponse(UserDetails userDetails) {
         Preferences.getInstance(LoginActivity.this).setString(Preferences.KEY_USER_ID, userDetails.getUserId());
+        Preferences.getInstance(LoginActivity.this).setString(Preferences.KEY_CURRENCY, AppConstants.CURRENCY_USD);
         Preferences.getInstance(LoginActivity.this).setString(Preferences.KEY_USER_LOGIN_PASS_WORD, edtPassword.getText().toString().trim().trim());
         Preferences.getInstance(LoginActivity.this).setString(Preferences.KEY_USER_LOGIN_EMAIL, edtEmail.getText().toString().trim().trim());
         Preferences.getInstance(LoginActivity.this).setBoolean(Preferences.KEY_IS_AUTO_LOGIN, true);
         Preferences.getInstance(LoginActivity.this).setString(Preferences.KEY_USER_MODEL, new Gson().toJson(userDetails));
         LoginLandingActivity.loginLandingActivity.finish();
-        DashBoardActivity.launchDashboradActivity(LoginActivity.this);
+        if (Functions.isConnected(LoginActivity.this)) {
+            callGetUserAddressApi();
+        } else {
+            Functions.showToast(LoginActivity.this, getResources().getString(R.string.err_no_internet_connection));
+        }
+    }
+    private void callGetUserAddressApi() {
+        RestClient.get().getUserAddressApi(Preferences.getInstance(LoginActivity.this).getString(Preferences.KEY_USER_ID), Preferences.getInstance(LoginActivity.this).getString(Preferences.KEY_CURRENCY)).enqueue(new Callback<ResponseGeUserAddress>() {
+            @Override
+            public void onResponse(Call<ResponseGeUserAddress> call, Response<ResponseGeUserAddress> response) {
+                if (response.body() != null) {
+                    if (response.body().getStatus().equalsIgnoreCase(AppConstants.ResponseSuccess)) {
+                        if (response.body().getAddressMaster() != null) {
+                            if (response.body().getAddressMaster().size() > 0) {
+                                DashBoardActivity.launchDashboradActivity(LoginActivity.this);
+                            } else {
+                                firetoAddNewWallet();
+                            }
+                        } else {
+                            firetoAddNewWallet();
+                        }
+                    } else {
+                        firetoAddNewWallet();
+                    }
+                } else {
+                    firetoAddNewWallet();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ResponseGeUserAddress> call, Throwable t) {
+                firetoAddNewWallet();
+                Functions.showToast(LoginActivity.this, t.getMessage());
+            }
+        });
+    }
+
+    private void firetoAddNewWallet() {
+        Intent intent = new Intent(LoginActivity.this, AddUpdateWalletDetailActivity.class);
+        intent.putExtra("isFrom", "From Login");
+        Functions.fireIntent(LoginActivity.this, intent);
+        finish();
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     @Override

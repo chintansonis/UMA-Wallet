@@ -1,14 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:gravity="center"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center|top"
+    android:orientation="vertical">
 
-    <com.umawallet.custom.TfTextView
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.umawallet.custom.TfTextView
+            android:id="@+id/tvTokenLite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/blue_border_blue_bg"
+            android:gravity="center"
+            android:padding="@dimen/padding_12"
+            android:text="@string/edu_token"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text_size_14"
+            app:ftype="regular" />
+
+        <com.umawallet.custom.TfTextView
+            android:id="@+id/tvTokenClassic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/blue_border_grey_bg"
+            android:gravity="center"
+            android:padding="@dimen/padding_12"
+            android:text="@string/edu_classic_token"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/text_size_14"
+            app:ftype="regular" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/height_1"
         android:gravity="center"
-        android:textSize="@dimen/text_size_16"
-        android:text="@string/this_feature_under_dev"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhiteSmoke"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_2">
+
+            <RadioButton
+                android:id="@+id/rbWeekly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_3"
+                android:text="Weekly"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_12" />
+
+            <RadioButton
+                android:id="@+id/rbNightly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_3"
+                android:text="Fortnightly"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_12" />
+
+            <RadioButton
+                android:id="@+id/rbMonthly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_3"
+                android:text="Monthly"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_12" />
+
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 
 </LinearLayout>

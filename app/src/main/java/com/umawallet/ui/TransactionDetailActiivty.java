@@ -27,6 +27,7 @@ public class TransactionDetailActiivty extends BaseActivity {
     private Transcation transcation;
     private android.support.v7.widget.Toolbar toolbar;
     private TfTextView txtTitle;
+    private TfTextView txtPrice;
 
 
     @Override
@@ -48,14 +49,8 @@ public class TransactionDetailActiivty extends BaseActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        if(transcation.getTranscationType().equalsIgnoreCase("C")){
-            txtTitle.setText("+ "+transcation.getTokenCount()+" "+transcation.getTokenShortCode());
-        }else {
-            txtTitle.setText("- "+transcation.getTokenCount()+" "+transcation.getTokenShortCode());
-        }
-
+        txtTitle.setText(getString(R.string.transaction_detail));
     }
-
     private void setData() {
     tvConfirmation.setText(transcation.getConfirmation());
     tvFromDetail.setText(transcation.getFromAdd());
@@ -64,6 +59,13 @@ public class TransactionDetailActiivty extends BaseActivity {
     tvTransaction.setText(transcation.getTransaction());
     tvTransactionTime.setText(transcation.getTransactionTime());
     tvTransactionBlock.setText(transcation.getBlock());
+        if(transcation.getTranscationType().equalsIgnoreCase("C")){
+            txtPrice.setText("+ "+transcation.getTokenCount()+" "+transcation.getTokenShortCode());
+            txtPrice.setTextColor(getResources().getColor(R.color.color_green));
+        }else {
+            txtPrice.setTextColor(getResources().getColor(R.color.red));
+            txtPrice.setText("- "+transcation.getTokenCount()+" "+transcation.getTokenShortCode());
+        }
     }
 
     private void init() {
@@ -72,6 +74,7 @@ public class TransactionDetailActiivty extends BaseActivity {
         this.tvTransactionTime = (TfTextView) findViewById(R.id.tvTransactionTime);
         this.tvTransaction = (TfTextView) findViewById(R.id.tvTransaction);
         this.tvConfirmation = (TfTextView) findViewById(R.id.tvConfirmation);
+        this.txtPrice = (TfTextView) findViewById(R.id.txtPrice);
         this.tvGasFee = (TfTextView) findViewById(R.id.tvGasFee);
         this.tvTODetail = (TfTextView) findViewById(R.id.tvTODetail);
         this.tvFromDetail = (TfTextView) findViewById(R.id.tvFromDetail);

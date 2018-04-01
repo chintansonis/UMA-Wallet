@@ -122,28 +122,27 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     Functions.showToast(RegisterActivity.this, getString(R.string.please_enter_confirm_password));
                 } else if (!edtPassword.getText().toString().trim().equalsIgnoreCase(edtConfirmPassword.getText().toString().trim())) {
                     Functions.showToast(RegisterActivity.this, getString(R.string.err_pass_not_match));
-                } else if (!TextUtils.isEmpty(edtethkey.getText().toString().trim())&&!TextUtils.isEmpty(edtethAddress.getText().toString().trim())) {
-                    Functions.showToast(RegisterActivity.this, getString(R.string.errr_choose_one));
-                } else if (!TextUtils.isEmpty(edtethAddress.getText().toString().trim())) {
-                    if (TextUtils.isEmpty(edtethnickName.getText().toString().trim())) {
-                        Functions.showToast(RegisterActivity.this, getString(R.string.err_please_enter_nick_name));
-                    }else {
-                        callRegisterApi();
-                    }
-                } else if (!TextUtils.isEmpty(edtethkey.getText().toString().trim())) {
-                    if (TextUtils.isEmpty(edtethnickName.getText().toString().trim())) {
-                        Functions.showToast(RegisterActivity.this, getString(R.string.err_please_enter_nick_name));
-                    }else {
-                        callRegisterApi();
-                    }
-                } else {
+                }else if(TextUtils.isEmpty(edtAddharNumber.getText().toString().trim())&&TextUtils.isEmpty(edtethnickName.getText().toString().trim())&&TextUtils.isEmpty(edtethAddress.getText().toString().trim())&&TextUtils.isEmpty(edtethkey.getText().toString().trim())){
+                    callRegisterApi();
+                }
+                else if(!isAnyFieldEmptyWallet()){
+                    Functions.showToast(RegisterActivity.this, getString(R.string.err_mandatory));
+                }
+                else {
                     callRegisterApi();
                 }
                 break;
 
         }
     }
-
+    private boolean isAnyFieldEmptyWallet()
+    {
+        boolean isEmpty = !edtethkey.getText().toString().trim().isEmpty();
+        isEmpty = isEmpty && !edtethAddress.getText().toString().trim().isEmpty();
+        isEmpty = isEmpty && !edtethnickName.getText().toString().trim().isEmpty();
+        isEmpty = isEmpty && !edtAddharNumber.getText().toString().trim().isEmpty();
+        return isEmpty;
+    }
     private void callRegisterApi() {
         if (Functions.isConnected(RegisterActivity.this)) {
             showProgressDialog(false);

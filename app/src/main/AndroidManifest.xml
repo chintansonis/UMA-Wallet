@@ -46,6 +46,20 @@
             android:name=".ui.TransactionDetailActiivty"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.WalletActvity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ui.AddUpdateWalletDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ui.TransferActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
         <activity
             android:name=".ui.ChnagePassowordActivity"
             android:screenOrientation="portrait"

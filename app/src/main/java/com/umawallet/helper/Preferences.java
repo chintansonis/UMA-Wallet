@@ -51,6 +51,7 @@ public class Preferences {
      * The constant KEY_USER_ID.
      */
     public static final String KEY_USER_ID = "KEY_USER_ID";
+    public static final String KEY_CURRENCY = "KEY_CURRENCY";
     public static final String KEY_LATITUDE = "KEY_LATITUDE";
     public static final String KEY_LONGITUDE = "KEY_LONGITUDE";
 

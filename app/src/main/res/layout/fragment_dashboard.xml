@@ -9,38 +9,49 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.umawallet.custom.TfTextView
-            android:id="@+id/tvPrice"
-            android:background="@color/colorWhiteSmoke"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center|top"
-            android:padding="@dimen/padding_6"
-            android:text="$ 155.00"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_22"
-            app:ftype="bold" />
 
-        <android.support.design.widget.TabLayout
-            android:layout_below="@+id/tvPrice"
-            android:id="@+id/tabs"
-            android:layout_marginTop="@dimen/height_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/dullWhite"
-            android:backgroundTint="@color/dullWhite"
-            app:tabBackground="@color/dullWhite"
-            app:tabGravity="center"
-            app:tabIndicatorColor="@color/colorPrimaryDark"
-            app:tabMode="scrollable"
-            app:tabSelectedTextColor="@color/colorPrimaryDark"
-            app:tabTextColor="@color/grey_dark" />
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pagerTabs"
-            android:layout_below="@id/tabs"
+        <LinearLayout
+            android:id="@+id/linearDashBoardTransactions"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:layout_below="@+id/tvPrice"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvPrice"
+                android:background="@color/dullWhite"
+                android:backgroundTint="@color/dullWhite"
+                app:tabBackground="@color/dullWhite"
+                app:tabGravity="center"
+                app:tabIndicatorColor="@color/colorPrimaryDark"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@color/colorPrimaryDark"
+                app:tabTextColor="@color/grey_dark" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pagerTabs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tabs"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </LinearLayout>
+
+        <com.umawallet.custom.TfTextView
+            android:id="@+id/txtNoDataFound"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_margin="@dimen/padding_8"
+            android:text="@string/no_transactions_found_home"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18"
+            android:visibility="gone" />
+
+
     </RelativeLayout>
 
 

@@ -16,10 +16,12 @@ import com.umawallet.api.RestClient;
 import com.umawallet.api.responsepojos.AddressMaster;
 import com.umawallet.api.responsepojos.ResponseGeUserAddress;
 import com.umawallet.api.responsepojos.UserDetails;
+import com.umawallet.custom.TfTextView;
 import com.umawallet.helper.AppConstants;
 import com.umawallet.helper.Functions;
 import com.umawallet.helper.Preferences;
 import com.umawallet.ui.BaseActivity;
+import com.umawallet.ui.TransferActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +35,8 @@ import retrofit2.Response;
  */
 
 public class DashBoardFragment extends BaseFragment implements View.OnClickListener {
-    private LinearLayout llFab;
+    private LinearLayout llFab, linearDashBoardTransactions;
+    private TfTextView txtNoDataFound;
     private android.support.v4.view.ViewPager pagerTabs;
     private android.support.design.widget.TabLayout tabs;
     private ArrayList<AddressMaster> addressMasterArrayList = new ArrayList<>();
@@ -73,29 +76,41 @@ public class DashBoardFragment extends BaseFragment implements View.OnClickListe
         if (Functions.isConnected(getBaseActivity())) {
             callGetUserAddressApi();
         } else {
+            checkVisibility();
             Functions.showToast(getBaseActivity(), getResources().getString(R.string.err_no_internet_connection));
         }
     }
 
+    private void checkVisibility() {
+        if (addressMasterArrayList.size() > 0) {
+            linearDashBoardTransactions.setVisibility(View.VISIBLE);
+            txtNoDataFound.setVisibility(View.GONE);
+        } else {
+            linearDashBoardTransactions.setVisibility(View.GONE);
+            txtNoDataFound.setVisibility(View.VISIBLE);
+        }
+    }
     private void callGetUserAddressApi() {
         getBaseActivity().showProgressDialog(false);
-        RestClient.get().getUserAddressApi(Preferences.getInstance(getBaseActivity()).getString(Preferences.KEY_USER_ID)).enqueue(new Callback<ResponseGeUserAddress>() {
+        RestClient.get().getUserAddressApi(Preferences.getInstance(getBaseActivity()).getString(Preferences.KEY_USER_ID),Preferences.getInstance(getBaseActivity()).getString(Preferences.KEY_CURRENCY)).enqueue(new Callback<ResponseGeUserAddress>() {
             @Override
             public void onResponse(Call<ResponseGeUserAddress> call, Response<ResponseGeUserAddress> response) {
                 getBaseActivity().hideProgressDialog();
                 if (response.body() != null) {
                     if (response.body().getStatus().equalsIgnoreCase(AppConstants.ResponseSuccess)) {
                         addressMasterArrayList.addAll(response.body().getAddressMaster());
+                        checkVisibility();
                         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
                         for (int i = 0; i < addressMasterArrayList.size(); i++) {
-                            viewPagerAdapter.addFragment(new TabTransactionFragment(addressMasterArrayList.get(i).getWalletAddress()), addressMasterArrayList.get(i).getWalletNickName());
+                            viewPagerAdapter.addFragment(new TabTransactionFragment(addressMasterArrayList.get(i).getWalletAddress(),addressMasterArrayList.get(i).getBalance()), addressMasterArrayList.get(i).getWalletNickName());
                         }
                         pagerTabs.setAdapter(viewPagerAdapter);
                         tabs.setupWithViewPager(pagerTabs);
                     } else {
-                        Functions.showToast(getBaseActivity(), response.body().getMessage());
+                        checkVisibility();
                     }
                 } else {
+                    checkVisibility();
                     Functions.showToast(getBaseActivity(), getString(R.string.err_something_went_wrong));
                 }
             }
@@ -103,6 +118,7 @@ public class DashBoardFragment extends BaseFragment implements View.OnClickListe
             @Override
             public void onFailure(Call<ResponseGeUserAddress> call, Throwable t) {
                 getBaseActivity().hideProgressDialog();
+                checkVisibility();
                 Functions.showToast(getBaseActivity(), t.getMessage());
             }
         });
@@ -111,12 +127,14 @@ public class DashBoardFragment extends BaseFragment implements View.OnClickListe
 
     private void init(View view) {
         llFab = view.findViewById(R.id.llFab);
+        txtNoDataFound = view.findViewById(R.id.txtNoDataFound);
+        linearDashBoardTransactions = view.findViewById(R.id.linearDashBoardTransactions);
         this.tabs = (android.support.design.widget.TabLayout) view.findViewById(R.id.tabs);
         pagerTabs = view.findViewById(R.id.pagerTabs);
         llFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Functions.showToast(getBaseActivity(), getBaseActivity().getString(R.string.this_feature_under_dev));
+                TransferActivity.launchTransferActivity(getBaseActivity());
             }
         });
     }

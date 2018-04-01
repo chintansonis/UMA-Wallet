@@ -22,4 +22,18 @@
         app:ftype="bold" />
 
 
+    <com.umawallet.custom.TfTextView
+        android:id="@+id/txtAddNewWallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|right"
+        android:ellipsize="end"
+        android:gravity="center|right"
+        android:maxLines="1"
+        android:visibility="gone"
+        android:paddingRight="@dimen/padding_8"
+        android:text="@string/add_new_wallet"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_14"
+        app:ftype="bold" />
 </android.support.v7.widget.Toolbar>

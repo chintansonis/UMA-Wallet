@@ -26,6 +26,15 @@
                 android:layout_height="match_parent">
 
                 <com.umawallet.custom.TfTextView
+                    android:id="@+id/txtPrice"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_8"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_16"
+                    />
+
+                <com.umawallet.custom.TfTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/grey_dark"
@@ -39,7 +48,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_6"
-                    android:background="@drawable/blue_border_grey_bg"
                     android:padding="@dimen/padding_8"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_16"
@@ -60,7 +68,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_6"
-                    android:background="@drawable/blue_border_grey_bg"
                     android:padding="@dimen/padding_8"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_16"
@@ -81,7 +88,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_6"
-                    android:background="@drawable/blue_border_grey_bg"
                     android:padding="@dimen/padding_8"
                     android:textSize="@dimen/text_size_16"
                     android:textColor="@color/black"
@@ -102,7 +108,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_6"
-                    android:background="@drawable/blue_border_grey_bg"
                     android:textColor="@color/black"
                     android:padding="@dimen/padding_8"
                     android:textSize="@dimen/text_size_16"
@@ -125,7 +130,6 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:layout_marginTop="@dimen/padding_6"
-                    android:background="@drawable/blue_border_grey_bg"
                     android:padding="@dimen/padding_8"
                     android:textSize="@dimen/text_size_16"
                     android:textStyle="normal"
@@ -146,7 +150,6 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:layout_marginTop="@dimen/padding_6"
-                    android:background="@drawable/blue_border_grey_bg"
                     android:padding="@dimen/padding_8"
                     android:textSize="@dimen/text_size_16"
                     android:textStyle="normal"
@@ -167,7 +170,6 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:layout_marginTop="@dimen/padding_6"
-                    android:background="@drawable/blue_border_grey_bg"
                     android:padding="@dimen/padding_8"
                     android:textSize="@dimen/text_size_16"
                     android:textStyle="normal"

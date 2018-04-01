@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/padding_8"
+                android:orientation="vertical">
+
+                <com.umawallet.custom.TfTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_8"
+                    android:text="@string/etherm_wallet"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text_size_16"
+                    app:ftype="bold" />
+
+                <com.umawallet.custom.MyEditTextWithCloseBtn
+                    android:id="@+id/edtethnickName"
+                    style="@style/signup_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_40"
+                    android:layout_marginTop="@dimen/padding_2"
+                    android:inputType="textCapSentences"
+                    android:maxLength="16"
+                    android:background="@drawable/blue_border_blue_bg"
+                    android:gravity="center|left"
+                    android:hint="@string/hint_nick_name"
+                    android:imeOptions="actionNext"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_size_14" />
+
+                <com.umawallet.custom.MyEditTextWithCloseBtn
+                    android:id="@+id/edtethAddress"
+                    style="@style/signup_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_40"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:background="@drawable/blue_border_blue_bg"
+                    android:gravity="center|left"
+                    android:hint="@string/hint_ethreum_address"
+                    android:imeOptions="actionNext"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_size_14" />
+
+                <com.umawallet.custom.MyEditTextWithCloseBtn
+                    android:id="@+id/edtethkey"
+                    style="@style/signup_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_40"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:background="@drawable/blue_border_blue_bg"
+                    android:gravity="center|left"
+                    android:hint="@string/hint_ethreum_key"
+                    android:imeOptions="actionNext"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_size_14" />
+
+                <com.umawallet.custom.MyEditTextWithCloseBtn
+                    android:id="@+id/edtAddharNumber"
+                    style="@style/signup_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_40"
+                    android:layout_marginTop="@dimen/padding_8"
+                    android:background="@drawable/blue_border_blue_bg"
+                    android:gravity="center|left"
+                    android:inputType="number"
+                    android:hint="@string/hint_adhar_number"
+                    android:imeOptions="actionDone"
+                    android:maxLength="12"
+                    android:singleLine="true"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_size_14" />
+
+
+                <com.umawallet.custom.TfTextView
+                    android:id="@+id/txtRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/padding_8"
+                    android:layout_marginRight="@dimen/padding_8"
+                    android:layout_marginTop="@dimen/padding_50"
+                    android:background="@drawable/corner_et_bg"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_8"
+                    android:text="@string/register"
+                    android:textColor="@color/white"
+                    app:ftype="regular" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
