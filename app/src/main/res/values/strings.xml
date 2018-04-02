@@ -61,6 +61,6 @@
     <string name="err_valied_adhar">Please enter valid adhar number.</string>
     <string name="err_mandatory">While adding a wallet all fields are mandatory</string>
     <string name="select_nick_name">Select wallet nickname</string>
-    <string name="token_transfer">Tokne Transfer</string>
-    <string name="select_token">Select Tokne</string>
+    <string name="token_transfer">Tokens Transfer</string>
+    <string name="select_token">Select Token</string>
 </resources>

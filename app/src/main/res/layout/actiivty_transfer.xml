@@ -59,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_8"
-                    android:text="Select Tokne"
+                    android:text="Select Token"
                     android:textColor="@color/grey_dark"
                     android:textSize="@dimen/text_size_16"
                     android:textStyle="normal" />
@@ -160,7 +160,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center|left"
-                        android:text="No. of Toknes"
+                        android:text="No. of Tokens"
                         android:textColor="@color/grey_dark"
                         android:textSize="@dimen/text_size_16"
                         android:textStyle="normal" />

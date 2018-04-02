@@ -1,11 +1,13 @@
 package com.umawallet.api.responsepojos;
 
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class GraphDatum implements Serializable {
+public class GraphDatum implements Serializable,Comparable {
     @SerializedName("Day")
     @Expose
     private String day;
@@ -29,4 +31,8 @@ public class GraphDatum implements Serializable {
         this.price = price;
     }
 
+    @Override
+    public int compareTo(@NonNull Object o) {
+        return 0;
+    }
 }

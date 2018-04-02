@@ -53,7 +53,6 @@ public class TransferActivity extends BaseActivity {
     private android.widget.ScrollView scrollView;
     private android.support.v7.widget.Toolbar toolbar;
     private TfTextView txtTitle;
-    private AddressMaster addressMaster;
     private int selectedAddressID = 0;
     private boolean mIsStateSpinnerFirstCall = true, mIsTokneSpinnerFirstCall = true;
     private TokenBalance selectedtoken;
@@ -89,8 +88,13 @@ public class TransferActivity extends BaseActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!mIsStateSpinnerFirstCall) {
-                    addressMaster = (AddressMaster) parent.getSelectedItem();
+                    AddressMaster addressMaster = (AddressMaster) parent.getSelectedItem();
                     selectedAddressID = Integer.valueOf(addressMaster.getAddressId());
+                    if (addressMaster.getWalletNickName().equalsIgnoreCase(getResources().getString(R.string.select_nick_name))) {
+                        tokenSpinner.setEnabled(false);
+                    } else {
+                        tokenSpinner.setEnabled(true);
+                    }
                     if (selectedAddressID != 0) {
                         if (tokenBalances != null) {
                             tokenBalances.clear();
@@ -98,9 +102,14 @@ public class TransferActivity extends BaseActivity {
                         if (tokenBalanceMySpinnerAdapter != null) {
                             tokenBalanceMySpinnerAdapter.clear();
                         }
+                        selectedTokenID = 0;
+                        tokenBalances = new ArrayList<>();
+                        tokenBalanceMySpinnerAdapter = new MySpinnerAdapter<TokenBalance>(TransferActivity.this);
+                        tokenSpinner.setAdapter(tokenBalanceMySpinnerAdapter);
                         tokenBalances.add(new TokenBalance(getResources().getString(R.string.select_token)));
                         tokenBalances.addAll(addressMaster.getTokenBalance());
                         tokenBalanceMySpinnerAdapter.addAll(tokenBalances);
+                        tokenBalanceMySpinnerAdapter.notifyDataSetChanged();
                         txtYourAddress.setText(addressMaster.getWalletAddress());
                     }
                 }
@@ -119,7 +128,7 @@ public class TransferActivity extends BaseActivity {
                     selectedtoken = (TokenBalance) parent.getSelectedItem();
                     selectedTokenID = Integer.valueOf(selectedtoken.getTokenId());
                     llTokensAvailable.setVisibility(View.VISIBLE);
-                    txtAvailableToken.setText("Available token " + selectedtoken.getTokenCount() + "");
+                    txtAvailableToken.setText("Available tokens " + selectedtoken.getTokenCount() + "");
                 }
                 mIsTokneSpinnerFirstCall = false;
             }
@@ -233,13 +242,11 @@ public class TransferActivity extends BaseActivity {
         txtYourAddress = (TfTextView) findViewById(R.id.txtYourAddress);
         txtAvailableToken = (TfTextView) findViewById(R.id.txtAvailableToken);
         tokenSpinner = (SearchableSpinner) findViewById(R.id.tokenSpinner);
+        tokenSpinner.setEnabled(false);
         walletSpinner = (SearchableSpinner) findViewById(R.id.walletSpinner);
         addressMasters = new ArrayList<>();
-        tokenBalances = new ArrayList<>();
         addressMasterMySpinnerAdapter = new MySpinnerAdapter<AddressMaster>(this);
-        tokenBalanceMySpinnerAdapter = new MySpinnerAdapter<TokenBalance>(this);
         walletSpinner.setAdapter(addressMasterMySpinnerAdapter);
-        tokenSpinner.setAdapter(tokenBalanceMySpinnerAdapter);
     }
 
     @Override

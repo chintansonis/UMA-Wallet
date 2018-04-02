@@ -3,6 +3,7 @@ package com.umawallet.fragment;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,6 +34,7 @@ import com.umawallet.helper.Preferences;
 import com.umawallet.ui.BaseActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,6 +53,8 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
     private LineChart horizontalBarChart;
     private ArrayList<GraphDatum> eduliteGraphDataList = new ArrayList<>();
     private int selectedPostion=0;
+    private GraphDatum graphDatum,graphDatummin;
+    private boolean  isEthmClassicSelectedFirst=false;
 
 
     @SuppressLint({"ValidFragment", "Unused"})
@@ -104,6 +108,7 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
         rbNightly.setChecked(false);
         rbMonthly.setChecked(false);
         selectedTab(1);
+        selectedTab(1);
     }
 
     private void initChart() {
@@ -136,11 +141,12 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
         l.setForm(Legend.LegendForm.LINE);
 
         /*// no description text
-        horizontalBarChart.setDescription("State Line Chart");
+
         horizontalBarChart.setNoDataTextDescription("You need to provide data for the chart.");*/
 
         // enable touch gestures
         horizontalBarChart.setTouchEnabled(true);
+        horizontalBarChart.refreshDrawableState();
 
         // enable scaling and dragging
         horizontalBarChart.setDragEnabled(true);
@@ -158,14 +164,16 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
         lower_limit.setLineWidth(4f);
         lower_limit.enableDashedLine(10f, 10f, 0f);
         lower_limit.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
-        lower_limit.setTextSize(10f);
+        lower_limit.setTextSize(9f);
 
         YAxis leftAxis = horizontalBarChart.getAxisLeft();
         leftAxis.removeAllLimitLines(); // reset all limit lines to avoid overlapping lines
         leftAxis.addLimitLine(upper_limit);
         leftAxis.addLimitLine(lower_limit);
-        leftAxis.setAxisMaxValue(500f);
-        leftAxis.setAxisMinValue(-50f);
+        Log.d("System out", "price round" + Math.round(graphDatum.getPrice()));
+        leftAxis.setAxisMaxValue(Math.round(graphDatum.getPrice()) + 4);
+        /*leftAxis.setAxisMaxValue(8f);*/
+        leftAxis.setAxisMinValue(0f);
         //leftAxis.setYOffset(20f);
         leftAxis.enableGridDashedLine(20f, 20f, 0f);
         leftAxis.setDrawZeroLine(false);
@@ -179,11 +187,10 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
         //horizontalBarChart.getViewPortHandler().setMaximumScaleX(2f);
 
         horizontalBarChart.animateX(2500, Easing.EasingOption.EaseInOutQuart);
-
-        //  dont forget to refresh the drawing
+        //horizontalBarChart.setScaleMinima(1f, Math.round(graphDatum.getPrice()));
+//        horizontalBarChart.zoom(0f,7f,0f,0f);
+        /*horizontalBarChart.zoom(0f,7f,0f,0f);*/
         horizontalBarChart.invalidate();
-
-
     }
 
     private ArrayList<Entry> getDataSet() {
@@ -217,7 +224,13 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
                 selectedTab(1);
                 break;
             case R.id.tvTokenClassic:
-                selectedTab(2);
+                if(!isEthmClassicSelectedFirst){
+                    isEthmClassicSelectedFirst=true;
+                    selectedTab(2);
+                    selectedTab(2);
+                }else {
+                    selectedTab(2);
+                }
                 break;
             case R.id.rbMonthly:
                 rbMonthly.setChecked(true);
@@ -225,7 +238,7 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
                 rbNightly.setChecked(false);
                 if(selectedPostion==1){
                     if (Functions.isConnected(getBaseActivity())) {
-                        callEduClassicApi("3");
+                        callEduLiteApi("3");
                     } else {
                         Functions.showToast(getBaseActivity(), getResources().getString(R.string.err_no_internet_connection));
                     }
@@ -243,7 +256,7 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
                 rbNightly.setChecked(true);
                 if(selectedPostion==1){
                     if (Functions.isConnected(getBaseActivity())) {
-                        callEduClassicApi("2");
+                        callEduLiteApi("2");
                     } else {
                         Functions.showToast(getBaseActivity(), getResources().getString(R.string.err_no_internet_connection));
                     }
@@ -261,7 +274,7 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
                 rbNightly.setChecked(false);
                 if(selectedPostion==1){
                     if (Functions.isConnected(getBaseActivity())) {
-                        callEduClassicApi("1");
+                        callEduLiteApi("1");
                     } else {
                         Functions.showToast(getBaseActivity(), getResources().getString(R.string.err_no_internet_connection));
                     }
@@ -315,6 +328,12 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
                             eduliteGraphDataList.clear();
                         }
                         eduliteGraphDataList.addAll(response.body().getGraphData());
+                        graphDatum = Collections.max(eduliteGraphDataList);
+                        graphDatummin = Collections.min(eduliteGraphDataList);
+                        if (horizontalBarChart != null) {
+                            horizontalBarChart.invalidate();
+                            horizontalBarChart.clear();
+                        }
                         initChart();
                     } else {
                     }
@@ -343,6 +362,12 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
                             eduliteGraphDataList.clear();
                         }
                         eduliteGraphDataList.addAll(response.body().getGraphData());
+                        graphDatum = Collections.max(eduliteGraphDataList);
+                        graphDatummin = Collections.min(eduliteGraphDataList);
+                        if (horizontalBarChart != null) {
+                            horizontalBarChart.invalidate();
+                            horizontalBarChart.clear();
+                        }
                         initChart();
                     } else {
                     }
