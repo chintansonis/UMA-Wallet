@@ -221,15 +221,15 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tvTokenLite:
-                selectedTab(1);
+                selectedTab(2);
                 break;
             case R.id.tvTokenClassic:
                 if(!isEthmClassicSelectedFirst){
                     isEthmClassicSelectedFirst=true;
-                    selectedTab(2);
-                    selectedTab(2);
+                    selectedTab(1);
+                    selectedTab(1);
                 }else {
-                    selectedTab(2);
+                    selectedTab(1);
                 }
                 break;
             case R.id.rbMonthly:
@@ -238,16 +238,17 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
                 rbNightly.setChecked(false);
                 if(selectedPostion==1){
                     if (Functions.isConnected(getBaseActivity())) {
-                        callEduLiteApi("3");
+                        callEduClassicApi("3");
                     } else {
                         Functions.showToast(getBaseActivity(), getResources().getString(R.string.err_no_internet_connection));
                     }
                 }else {
                     if (Functions.isConnected(getBaseActivity())) {
-                        callEduClassicApi("3");
+                        callEduLiteApi("3");
                     } else {
                         Functions.showToast(getBaseActivity(), getResources().getString(R.string.err_no_internet_connection));
                     }
+
                 }
                 break;
             case R.id.rbNightly:
@@ -256,16 +257,17 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
                 rbNightly.setChecked(true);
                 if(selectedPostion==1){
                     if (Functions.isConnected(getBaseActivity())) {
-                        callEduLiteApi("2");
+                        callEduClassicApi("2");
                     } else {
                         Functions.showToast(getBaseActivity(), getResources().getString(R.string.err_no_internet_connection));
                     }
                 }else {
                     if (Functions.isConnected(getBaseActivity())) {
-                        callEduClassicApi("2");
+                        callEduLiteApi("2");
                     } else {
                         Functions.showToast(getBaseActivity(), getResources().getString(R.string.err_no_internet_connection));
                     }
+
                 }
                 break;
             case R.id.rbWeekly:
@@ -274,13 +276,13 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
                 rbNightly.setChecked(false);
                 if(selectedPostion==1){
                     if (Functions.isConnected(getBaseActivity())) {
-                        callEduLiteApi("1");
+                        callEduClassicApi("1");
                     } else {
                         Functions.showToast(getBaseActivity(), getResources().getString(R.string.err_no_internet_connection));
                     }
                 }else {
                     if (Functions.isConnected(getBaseActivity())) {
-                        callEduClassicApi("1");
+                        callEduLiteApi("1");
                     } else {
                         Functions.showToast(getBaseActivity(), getResources().getString(R.string.err_no_internet_connection));
                     }
@@ -290,18 +292,6 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
     }
     private void selectedTab(int position) {
         if (position == 1) {
-            selectedPostion=position;
-            tvTokenLite.setBackground(getBaseActivity().getResources().getDrawable(R.drawable.blue_border_blue_bg));
-            tvTokenLite.setTextColor(getBaseActivity().getResources().getColor(R.color.colorPrimaryDark));
-            tvTokenClassic.setBackground(getBaseActivity().getResources().getDrawable(R.drawable.blue_border_grey_bg));
-            tvTokenClassic.setTextColor(getBaseActivity().getResources().getColor(R.color.grey_dark));
-            rbWeekly.setChecked(true);
-            if (Functions.isConnected(getBaseActivity())) {
-                callEduLiteApi("1");
-            } else {
-                Functions.showToast(getBaseActivity(), getResources().getString(R.string.err_no_internet_connection));
-            }
-        } else {
             selectedPostion=position;
             tvTokenLite.setBackground(getBaseActivity().getResources().getDrawable(R.drawable.blue_border_grey_bg));
             tvTokenLite.setTextColor(getBaseActivity().getResources().getColor(R.color.grey_dark));
@@ -313,6 +303,20 @@ public class StateChartFragment extends BaseFragment implements View.OnClickList
             } else {
                 Functions.showToast(getBaseActivity(), getResources().getString(R.string.err_no_internet_connection));
             }
+        } else {
+            selectedPostion=position;
+            tvTokenLite.setBackground(getBaseActivity().getResources().getDrawable(R.drawable.blue_border_blue_bg));
+            tvTokenLite.setTextColor(getBaseActivity().getResources().getColor(R.color.colorPrimaryDark));
+            tvTokenClassic.setBackground(getBaseActivity().getResources().getDrawable(R.drawable.blue_border_grey_bg));
+            tvTokenClassic.setTextColor(getBaseActivity().getResources().getColor(R.color.grey_dark));
+            rbWeekly.setChecked(true);
+            if (Functions.isConnected(getBaseActivity())) {
+                callEduLiteApi("1");
+            } else {
+                Functions.showToast(getBaseActivity(), getResources().getString(R.string.err_no_internet_connection));
+            }
+
+
         }
     }
 

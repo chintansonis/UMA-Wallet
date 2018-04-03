@@ -20,8 +20,8 @@
     <string name="enter_ethreum_key">Please enter ethereum public key</string>
     <string name="hint_nick_name">Enter nick name</string>
     <string name="or">OR</string>
-    <string name="edu_token">EduStar Lite</string>
-    <string name="edu_classic_token">EduStar Classic</string>
+    <string name="edu_token">Edustars Lite</string>
+    <string name="edu_classic_token">Edustars</string>
     <string name="etherm_detail">Add Ethereum Wallet Detail (optional)</string>
     <string name="etherm_wallet">Ethereum Wallet</string>
     <string name="err_pass_not_match">passwords not matched.</string>
